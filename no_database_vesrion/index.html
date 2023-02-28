@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NTU GPA Calculator (no database)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mystyle.css">
+    
+</head>
+<style>
+
+</style>
+
+<body>
+    <script src="app.js"></script>
+
+    <h1 style="text-align:center;">GPA Calculator</h1>
+    <form>
+        <span>畢業學分: <span id="c0">0</span></span>
+        <label for="c1">&nbsp;&nbsp;=&nbsp;&nbsp;共同必修及通識</label>
+        <input type="number" size="4" id="c1" min="0" value="24">
+        <label for="c2">&nbsp;&nbsp;&nbsp;+ 必修</label>
+        <input type="number" size="4" id="c2" min="0" value="51">
+        <label for="c3">&nbsp;&nbsp;&nbsp;+ 系內選修</label>
+        <input type="number" size="4" id="c3" min="0" value="30">
+        <label for="c4">&nbsp;&nbsp;&nbsp;+ 系外選修</label>
+        <input type="number" size="4" id="c4" min="0" value="23">
+        &nbsp;&nbsp;&nbsp;
+        <button type="button" onclick="saveCredit()" id="csave">save</button>
+    </form>
+    <p>得到學分 (<span id="get0">0</span>) = 共同必修及通識(<span id="get1">0</span>)
+       + 必修(<span id="get2">0</span>) + 系內選修(<span id="get3">0</span>)
+       + 系外選修(<span id="get4">0</span>)</p>
+    <p>剩餘學分 (<span id="left0">0</span>) = 共同必修及通識(<span id="left1">0</span>)
+       + 必修(<span id="left2">0</span>) + 系內選修(<span id="left3">0</span>)
+       + 系外選修(<span id="left4">0</span>)</p>
+    <h3 id="0">Overall:&nbsp;&nbsp;Earned Credits = 0,&nbsp;&nbsp;&nbsp;GPA = 0</h3>
+    <hr> 
+    <p id="1">1-1:&nbsp;&nbsp;Earned Credits = 0,&nbsp;&nbsp;&nbsp;GPA = 0</p>
+    <p id="form1"></p>
+    <button onclick="addForm(1)">Add 1-1 Course</button><br>
+    <p id = "2">1-2:&nbsp;&nbsp;Earned Credits = 0,&nbsp;&nbsp;&nbsp;GPA = 0</p>
+    <p id="form2"></p>
+    <button onclick="addForm(2)">Add 1-2 Course</button><br>
+    <hr>
+    <p id="3">2-1:&nbsp;&nbsp;Earned Credits = 0,&nbsp;&nbsp;&nbsp;GPA = 0</p>
+    <p id="form3"></p>
+    <button onclick="addForm(3)">Add 2-1 Course</button><br>
+    <p id = "4">2-2:&nbsp;&nbsp;Earned Credits = 0,&nbsp;&nbsp;&nbsp;GPA = 0</p>
+    <p id="form4"></p>
+    <button onclick="addForm(4)">Add 2-2 Course</button><br>
+    <hr>
+    <p id="5">3-1:&nbsp;&nbsp;Earned Credits = 0,&nbsp;&nbsp;&nbsp;GPA = 0</p>
+    <p id="form5"></p>
+    <button onclick="addForm(5)">Add 3-1 Course</button><br>
+    <p id = "6">3-2:&nbsp;&nbsp;Earned Credits = 0,&nbsp;&nbsp;&nbsp;GPA = 0</p>
+    <p id="form6"></p>
+    <button onclick="addForm(6)">Add 3-2 Course</button><br>
+    <hr>
+    <p id="7">4-1:&nbsp;&nbsp;Earned Credits = 0,&nbsp;&nbsp;&nbsp;GPA = 0</p>
+    <p id="form7"></p>
+    <button onclick="addForm(7)">Add 4-1 Course</button><br>
+    <p id = "8">4-2:&nbsp;&nbsp;Earned Credits = 0,&nbsp;&nbsp;&nbsp;GPA = 0</p>
+    <p id="form8"></p>
+    <button onclick="addForm(8)">Add 4-2 Course</button><br>
+    <hr>
+    <p id = "9">Others:&nbsp;&nbsp;Earned Credits = 0,&nbsp;&nbsp;&nbsp;GPA = 0</p>
+    <p id="form9"></p>
+    <button onclick="addForm(9)">Add Course</button><br>
+    <hr>
+</body>
+</html>
