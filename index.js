@@ -46,10 +46,7 @@ function handleDisconnect() {
 handleDisconnect();
 
 // let db = mysql.createConnection({
-//   host: 'localhost',
-//   user: 'root',
-//   password: 'cwy1030019',
-//   database: 'gpa'
+//  
 // })
 // db.connect((err) => {
 //   if (err){
