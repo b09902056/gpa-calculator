@@ -6,13 +6,6 @@ import { fileURLToPath } from 'url'
 import mysql from 'mysql'
 import bcrypt from 'bcrypt'
 
-let db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'cwy1030019',
-  database: 'gpa'
-})
-
 // import passport from 'passport'
 // import {initialize} from './passport-config.js'
 // import flash from 'express-flash'
@@ -20,47 +13,50 @@ let db = mysql.createConnection({
 // import storage from 'node-sessionstorage'
 // import apiRoute from './router.js'
 
-// var db_config = {
-//     host: 'us-cdbr-east-06.cleardb.net',
-//     user: 'be12783f53a241',
-//     password: '97fbe18d',
-//     database: 'heroku_422bd69f1356608'
-// };
-// let  db;
-// function handleDisconnect() {
-//   db = mysql.createConnection(db_config); // Recreate the connection, since
-//                                                   // the old one cannot be reused.
+// Modify this for your MySQL database
+var db_config = {
+    host: '<your host>',
+    user: '<your user>',
+    password: '<your password>',
+    database: '<your database>'
+};
+//
 
-//   db.connect(function(err) {              // The server is either down
-//     if(err) {                                     // or restarting (takes a while sometimes).
-//       console.log('error when connecting to db:', err);
-//       setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
-//     }                                     // to avoid a hot loop, and to allow our node script to
-//   });                                     // process asynchronous requests in the meantime.
-//                                           // If you're also serving http, display a 503 error.
-//   db.on('error', function(err) {
-//     console.log('db error', err);
-//     if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
-//       handleDisconnect();                         // lost due to either server restart, or a
-//     } else {                                      // connnection idle timeout (the wait_timeout
-//       throw err;                                  // server variable configures this)
-//     }
-//   });
-// }
-// handleDisconnect();
+let  db;
+function handleDisconnect() {
+  db = mysql.createConnection(db_config); // Recreate the connection, since
+                                                  // the old one cannot be reused.
+
+  db.connect(function(err) {              // The server is either down
+    if(err) {                                     // or restarting (takes a while sometimes).
+      console.log('error when connecting to db:', err);
+      setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+    }                                     // to avoid a hot loop, and to allow our node script to
+  });                                     // process asynchronous requests in the meantime.
+                                          // If you're also serving http, display a 503 error.
+  db.on('error', function(err) {
+    console.log('db error', err);
+    if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
+      handleDisconnect();                         // lost due to either server restart, or a
+    } else {                                      // connnection idle timeout (the wait_timeout
+      throw err;                                  // server variable configures this)
+    }
+  });
+}
+handleDisconnect();
+
 // let db = mysql.createConnection({
-//   host: 'us-cdbr-east-06.cleardb.net',
-//   user: 'be12783f53a241',
-//   password: '97fbe18d',
-//   database: 'heroku_422bd69f1356608'
+//   host: 'localhost',
+//   user: 'root',
+//   password: 'cwy1030019',
+//   database: 'gpa'
 // })
-
-db.connect((err) => {
-  if (err){
-    throw err;
-  }
-  console.log('db connected...')
-})
+// db.connect((err) => {
+//   if (err){
+//     throw err;
+//   }
+//   console.log('db connected...')
+// })
 
 
 dotenv.config()
@@ -80,6 +76,17 @@ app.use(express.urlencoded({extended: false}))
 
 app.use(express.static(path.join(__dirname, 'static')))
 console.log(__dirname)
+
+
+db.query("CREATE TABLE IF NOT EXISTS account(\
+  id INT NOT NULL AUTO_INCREMENT,\
+  name VARCHAR(255) NOT NULL,\
+  password VARCHAR(255) NOT NULL,\
+  PRIMARY KEY (id))", 
+  function (err, result) {
+    if (err) throw err;
+    // console.log(result);
+});
 
 
 
