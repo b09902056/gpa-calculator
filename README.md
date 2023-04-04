@@ -2,8 +2,8 @@
 ## Introduction
 
 ## History
-The app is originally deployed on Heroku. On August 2022, Heroku announced the removal of their free product plans.
-Unfortunately, I cannot use it anymore. 
+The app is originally deployed on Heroku. However, Heroku announced the removal of their free product plans on August 2022.
+
 
 ## How to use it
 1. Create a database. (I used MySQL workbench).
