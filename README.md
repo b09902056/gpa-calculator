@@ -1,6 +1,6 @@
 # GPA Calculator
 ## Introduction
-
+Caculate my GPA and the credits left in NTU.
 ## History
 The app is originally deployed on Heroku. However, Heroku announced the removal of their free product plans on August 2022.
 
